@@ -41,9 +41,9 @@ const Catalog = () => {
             </div>
             {productsResponse && (
             <Pagination 
-            totalPages={productsResponse.totalPages}
-            activePage={activePage}
-            onChange={page => setActivePage(page)}
+                totalPages={productsResponse.totalPages}
+                activePage={activePage}
+                onChange={page => setActivePage(page)}
             />
             )}
         </div>

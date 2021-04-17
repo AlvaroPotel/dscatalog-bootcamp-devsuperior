@@ -1,6 +1,8 @@
 package com.devsuperior.dscatalog.services;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.persistence.EntityNotFoundException;
 
@@ -23,6 +25,11 @@ public class CategoryService {
 
 	@Autowired
 	private CategoryRepository repository;
+	
+	@Transactional(readOnly = true)
+	public List<CategoryDTO> findAll() {
+		return repository.findAll().stream().map(CategoryDTO::new).collect(Collectors.toList());
+	}
 	
 	@Transactional(readOnly = true)
 	public Page<CategoryDTO> findAllPaged(PageRequest pageRequest){
